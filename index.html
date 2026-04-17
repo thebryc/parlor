@@ -42,11 +42,6 @@
     align-items: center;
     gap: 0.75rem;
     background: var(--bg);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
   }
   .top-bar img {
     height: 44px;
@@ -65,10 +60,9 @@
   /* HERO */
   .hero {
     background: linear-gradient(100deg, var(--accent) 0%, var(--green) 30%, var(--primary) 65%, var(--purple) 100%);
-    padding: 4rem 2rem 3rem;
+    padding: 5rem 2rem;
     text-align: center;
     color: #fff;
-    overflow: hidden;
   }
   .hero-inner {
     max-width: 860px;
@@ -81,7 +75,6 @@
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     color: #fff;
-    opacity: 1;
   }
   .hero h1 {
     font-family: "proxima-nova", sans-serif;
@@ -95,14 +88,12 @@
     font-size: 0.975rem;
     line-height: 1.55;
     max-width: 560px;
-    margin: 0 auto;
-    opacity: 0.95;
+    margin: 0 auto 1.75rem;
+    color: #fff;
   }
-  .hero-inner > *:last-child { margin-bottom: 0 !important; }
 
   .hero-cta {
     display: inline-block;
-    margin-top: 1.75rem;
     background: #fff;
     color: var(--primary);
     border: none;
