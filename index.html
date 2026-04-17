@@ -49,9 +49,11 @@
     z-index: 10;
   }
   .top-bar img {
-    height: 36px;
-    width: 36px;
+    height: 44px;
+    width: 44px;
     border-radius: 50%;
+    object-fit: cover;
+    display: block;
   }
   .top-bar span {
     font-weight: 700;
@@ -258,11 +260,11 @@
 
   .success-msg {
     display: none;
-    background: var(--success-bg);
-    border: 1.5px solid var(--success-border);
+    background: #eef4fb;
+    border: 1.5px solid var(--primary);
     border-radius: 6px;
     padding: 1.25rem;
-    color: #065f46;
+    color: var(--primary);
   }
   .success-msg.active { display: block; }
   .success-msg strong { display: block; margin-bottom: 0.25rem; font-size: 1.05rem; }
@@ -302,10 +304,6 @@
   </div>
 </section>
 
-<div class="photo-band">
-  <img src="fellows.jpg" alt="BRYC Fellows walking together">
-</div>
-
 <div class="content">
 
   <!-- LEFT COLUMN: DETAILS -->
@@ -324,7 +322,7 @@
 
     <div class="detail-block">
       <h2>Attire</h2>
-      <p>Cocktail attire</p>
+      <p><strong>Cocktail attire</strong></p>
     </div>
 
     <div class="detail-block">
@@ -448,9 +446,17 @@
         <button type="submit" class="submit-btn">RSVP</button>
         <div class="error-msg" id="rsvp-error">Something went wrong. Please try again or email alyson@thebryc.org.</div>
       </form>
-      <div class="success-msg" id="rsvp-success">
+      <div class="success-msg" id="rsvp-success-yes">
         <strong>Thank you!</strong>
-        Your response has been received.
+        We look forward to seeing you on May 20.
+      </div>
+      <div class="success-msg" id="rsvp-success-no">
+        <strong>Thank you for letting us know.</strong>
+        We hope to see you at a future event.
+      </div>
+      <div class="success-msg" id="rsvp-success-maybe">
+        <strong>Thanks for letting us know.</strong>
+        We hope you can make it!
       </div>
     </div>
 
@@ -530,8 +536,13 @@
     e.preventDefault();
     const form = e.target;
     const errorMsg = document.getElementById('rsvp-error');
-    const successMsg = document.getElementById('rsvp-success');
+    const successYes = document.getElementById('rsvp-success-yes');
+    const successNo = document.getElementById('rsvp-success-no');
+    const successMaybe = document.getElementById('rsvp-success-maybe');
     errorMsg.classList.remove('active');
+
+    // Determine which success message to show
+    const attendingValue = form.querySelector('input[name="Attending"]:checked')?.value;
 
     try {
       const response = await fetch(form.action, {
@@ -541,7 +552,10 @@
       });
       if (response.ok) {
         form.style.display = 'none';
-        successMsg.classList.add('active');
+        if (attendingValue === 'Yes') successYes.classList.add('active');
+        else if (attendingValue === 'No') successNo.classList.add('active');
+        else if (attendingValue === 'Maybe') successMaybe.classList.add('active');
+        else successYes.classList.add('active');
       } else {
         errorMsg.classList.add('active');
       }
