@@ -65,25 +65,23 @@
   /* HERO */
   .hero {
     background: linear-gradient(100deg, var(--accent) 0%, var(--green) 30%, var(--primary) 65%, var(--purple) 100%);
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
     text-align: center;
     color: #fff;
-    min-height: 45vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
   }
   .hero-inner {
     max-width: 860px;
     margin: 0 auto;
   }
   .hero .eyebrow {
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    margin-bottom: 1.25rem;
-    opacity: 0.95;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    opacity: 1;
   }
   .hero h1 {
     font-family: "proxima-nova", sans-serif;
@@ -100,6 +98,7 @@
     margin: 0 auto;
     opacity: 0.95;
   }
+  .hero-inner > *:last-child { margin-bottom: 0 !important; }
 
   .hero-cta {
     display: none;
